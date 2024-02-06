@@ -1,10 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
 
+
 function App() {
   return (
     <div className="App">
-     <p>hello world {2+2}</p>
+      <h1 className="text-3xl font-bold underline">Hello, Tailwind! haloooo</h1>
     </div>
   );
 }
