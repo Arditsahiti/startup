@@ -1,9 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .App {
   text-align: center;
+  align-items: center;
 }
-
+.logo{
+  width: 100px;
+  height: 100px;
+  margin-top: 20px;
+  margin-bottom: 20px;  
+}
 .App-logo {
-  height: 25vmin;
+  height: 5px;
   pointer-events: none;
 }
 
@@ -14,7 +24,7 @@
 }
 .halo{
   color: #61dafb;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: bold;
   animation: animate 3s linear infinite;
 }

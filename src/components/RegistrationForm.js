@@ -21,7 +21,7 @@ function RegistrationForm() {
   };
 
   return (
-    <div className="halo">
+    <div className="halo mb-4">
       {/* Registration Form */}
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -40,12 +40,12 @@ function RegistrationForm() {
             <input
               id="email"
               type="email"
-              {...register("email")}
+              {...register("email", { required: true, pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/ })}
               className="input"
             />
           </div>
           {errors.email && (
-            <span className="text-xs text-red-500">This field is required</span>
+            <span className="text-xs text-red-500">This field is required and should be a valid email address</span>
           )}
         </div>
 
@@ -61,13 +61,36 @@ function RegistrationForm() {
             <input
               id="password"
               type="password"
-              {...register("password")}
+              {...register("password", { required: true, minLength: 8 })}
               className="input"
             />
           </div>
           {errors.password && (
             <span className="text-xs text-blue-500">
-              This field is required
+              This field is required and should be at least 8 characters long
+            </span>
+          )}
+        </div>
+
+        {/* Confirm Password Input */}
+        <div className="mb-6">
+          <label
+            htmlFor="confirmPassword"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Confirm Password:
+          </label>
+          <div className="mt-1 relative rounded-md shadow-sm">
+            <input
+              id="confirmPassword"
+              type="password"
+              // {...register("confirmPassword", { required: true, validate: value => value === watch('password') })}
+              className="input"
+            />
+          </div>
+          {errors.confirmPassword && (
+            <span className="text-xs text-blue-500">
+              This field is required and should match the password
             </span>
           )}
         </div>

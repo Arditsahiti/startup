@@ -5,18 +5,14 @@ import RegistrationForm from './components/RegistrationForm';
 
 function App() {
   return (
-    <div className="App">
-      <div className="App-header mb-4">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div className="">
+      <img
+        src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c516.png"
+        className="max-w-md mx-auto logo"
+        alt="logo"
+      />
 
-        <h1 className="text">Welcome to the Registration Form</h1>
-        
-        <h1 className="text">Please fill in the form below to register</h1>
-
-        <RegistrationForm />
-
-      
-      </div>
+      <RegistrationForm />
     </div>
   );
 }
