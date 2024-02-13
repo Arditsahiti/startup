@@ -21,17 +21,13 @@ function RegistrationForm() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-500 to-indigo-600">
+    <div className="halo mb-4">
       {/* Registration Form */}
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="max-w-md w-full mx-auto bg-white p-8 rounded-2xl shadow-2xl"
       >
-        {/* Logo and Title */}
-        <h1 className="text-2xl font-bold  mb-6 text-center">
-          <img src="/logo192.png" alt="Logo" className="mx-auto w-20 h-20" />
-        </h1>
-        <h1>Register</h1>
+        <h1>Register:</h1>
         {/* Email Input */}
         <div className="mb-4">
           <label
@@ -44,12 +40,12 @@ function RegistrationForm() {
             <input
               id="email"
               type="email"
-              {...register("email")}
-              className="block w-full pl-10 pr-3 py-2 rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+              {...register("email", { required: true, pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/ })}
+              className="input"
             />
           </div>
           {errors.email && (
-            <span className="text-xs text-red-500">This field is required</span>
+            <span className="text-xs text-red-500">This field is required and should be a valid email address</span>
           )}
         </div>
 
@@ -65,21 +61,42 @@ function RegistrationForm() {
             <input
               id="password"
               type="password"
-              {...register("password")}
-              className="block w-full pl-10 pr-3 py-2 rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+              {...register("password", { required: true, minLength: 8 })}
+              className="input"
             />
           </div>
           {errors.password && (
-            <span className="text-xs text-blue-500">This field is required</span>
+            <span className="text-xs text-blue-500">
+              This field is required and should be at least 8 characters long
+            </span>
+          )}
+        </div>
+
+        {/* Confirm Password Input */}
+        <div className="mb-6">
+          <label
+            htmlFor="confirmPassword"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Confirm Password:
+          </label>
+          <div className="mt-1 relative rounded-md shadow-sm">
+            <input
+              id="confirmPassword"
+              type="password"
+              // {...register("confirmPassword", { required: true, validate: value => value === watch('password') })}
+              className="input"
+            />
+          </div>
+          {errors.confirmPassword && (
+            <span className="text-xs text-blue-500">
+              This field is required and should match the password
+            </span>
           )}
         </div>
 
         {/* Submit Button */}
-        <input
-          type="submit"
-          className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-gradient-to-l focus:outline-none focus:ring-4 focus:ring-purple-300 shadow-lg cursor-pointer transition ease-in-out duration-150 transform hover:-translate-y-1"
-          value="Register"
-        />
+        <input type="submit" className="buton" value="Register" />
       </form>
     </div>
   );
