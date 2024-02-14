@@ -11,7 +11,7 @@ function App() {
         className="max-w-md mx-auto logo"
         alt="logo"
       />
-
+      
       <RegistrationForm />
     </div>
   );
