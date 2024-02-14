@@ -2,9 +2,11 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+
 const schema = yup.object().shape({
+  name: yup.string().required(),
+  surname: yup.string().required(),
   email: yup.string().email().required(),
-  password: yup.string().min(8).required(),
 });
 
 function RegistrationForm() {
@@ -20,6 +22,7 @@ function RegistrationForm() {
     // Process registration data here
   };
 
+  
   return (
     <div className="halo mb-4">
       {/* Registration Form */}
@@ -28,6 +31,49 @@ function RegistrationForm() {
         className="max-w-md w-full mx-auto bg-white p-8 rounded-2xl shadow-2xl"
       >
         <h1>Register:</h1>
+
+        {/* Name Input */}
+        <div className="mb-4">
+          <label
+            htmlFor="name"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Name:
+          </label>
+          <div className="">
+            <input
+              id="name"
+              type="text"
+              {...register("name", { required: true })}
+              className="input"
+            />
+          </div>
+          {errors.name && (
+            <span className="text-md text-red-500">This field is required</span>
+          )}
+        </div>
+
+        {/* Surname Input */}
+        <div className="mb-4">
+          <label
+            htmlFor="surname"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Surname:
+          </label>
+          <div className="">
+            <input
+              id="surname"
+              type="text"
+              {...register("surname", { required: true })}
+              className="input"
+            />
+          </div>
+          {errors.surname && (
+            <span className="text-xs text-red-500">This field is required</span>
+          )}
+        </div>
+
         {/* Email Input */}
         <div className="mb-4">
           <label
@@ -36,61 +82,20 @@ function RegistrationForm() {
           >
             Email:
           </label>
-          <div className="mt-1 relative rounded-md shadow-sm">
+          <div className="">
             <input
               id="email"
               type="email"
-              {...register("email", { required: true, pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/ })}
+              {...register("email", {
+                required: true,
+                pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
+              })}
               className="input"
             />
           </div>
           {errors.email && (
-            <span className="text-xs text-red-500">This field is required and should be a valid email address</span>
-          )}
-        </div>
-
-        {/* Password Input */}
-        <div className="mb-6">
-          <label
-            htmlFor="password"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Password:
-          </label>
-          <div className="mt-1 relative rounded-md shadow-sm">
-            <input
-              id="password"
-              type="password"
-              {...register("password", { required: true, minLength: 8 })}
-              className="input"
-            />
-          </div>
-          {errors.password && (
-            <span className="text-xs text-blue-500">
-              This field is required and should be at least 8 characters long
-            </span>
-          )}
-        </div>
-
-        {/* Confirm Password Input */}
-        <div className="mb-6">
-          <label
-            htmlFor="confirmPassword"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Confirm Password:
-          </label>
-          <div className="mt-1 relative rounded-md shadow-sm">
-            <input
-              id="confirmPassword"
-              type="password"
-              // {...register("confirmPassword", { required: true, validate: value => value === watch('password') })}
-              className="input"
-            />
-          </div>
-          {errors.confirmPassword && (
-            <span className="text-xs text-blue-500">
-              This field is required and should match the password
+            <span className="text-xs text-red-500">
+              This field is required and should be a valid email address
             </span>
           )}
         </div>
