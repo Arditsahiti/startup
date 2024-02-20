@@ -7,11 +7,11 @@ function App() {
   return (
     <div className="">
       <img
-        src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c516.png"
+        src="https://cdn.freebiesupply.com/images/large/2x/apple-logo-transparent.png"
         className="max-w-md mx-auto logo"
         alt="logo"
       />
-      
+
       <RegistrationForm />
     </div>
   );
