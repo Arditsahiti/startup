@@ -1,7 +1,7 @@
-import logo from './logo.svg';
-import './App.css';
-import RegistrationForm from './components/RegistrationForm';
-
+import logo from "./logo.svg";
+import "./App.css";
+import RegistrationForm from "./components/RegistrationForm";
+import LogInForm from "./components/LogInForm";
 
 function App() {
   return (
@@ -11,9 +11,9 @@ function App() {
         className="max-w-md mx-auto logo"
         alt="logo"
       />
-
-      <RegistrationForm />
-    </div>
+      {/* <LogInForm />  */}
+        <RegistrationForm />
+ </div> 
   );
 }
 
